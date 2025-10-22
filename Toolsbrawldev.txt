@@ -1,12 +1,18 @@
+Script For Tool
 local tool = script.Parent
+local handle = tool.Handle
+local sound = tool.SoundBata2x
+
+local holding = false
+local WAIT_TIME = 0.2
 
 tool.Equipped:Connect(function()
 	print("this tool has been equipped")
-	tool:Activate()
+	sound:Play()
 end)
 
 tool.Unequipped:Connect(function()
-	print("deactivated")
+	print("this tool has been unequipped")
 end)
 
 tool.Activated:Connect(function()
@@ -14,11 +20,22 @@ tool.Activated:Connect(function()
 	part.Position = Vector3.new(0, 50, 0)
 	part.Size = Vector3.new(10, 10, 10)
 	print("a new part has respawn")
+	print("Sound Played")
+	holding = true
+	tool:ScaleTo(2)
+	
+	while holding do
+		handle.Color =  Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))
+		task.wait(WAIT_TIME)
+	end
+	
+	game.Players:FindFirstChild("MSpinMan").leaderstats.Clicks.Value += 1
 end)
 
---this ↓ is not gonna be used only gonna function when your holding left click and let go when you let go it will function
 tool.Deactivated:Connect(function()
 	print("deactivated")
+	holding = false
+	tool:ScaleTo(1)
 end)
 
 so ACTIVATED means like when you click on mouse left click and for other devices like mobile, xbox, etc and
@@ -33,3 +50,20 @@ another good thing IS tool:Activate() :Activat() is the same for like clicking l
 another too there is a properties of the tool that like RequiresHandle its on the properties and you can disable and able it so when you equip the tool it will not show like handle because you able it first off you NEED to delete the HANDLE and it will work if you didn't delete it will show a error.
 
 Theres actually StarterGear on Players - user.name - StarterGear and inside there if you put like tool and when they reset they will still have it, its really good especially for like gamepass purchase
+
+:Play() is for playing the script
+
+:ScaleTo(2) is for scaling the thing
+
+handle.Color =  Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))                                              this is for randomizing for selection of colors
+
+PlayerAdded
+game.Players.PlayerAdded:Connect(function(plr)
+	local playerstats = Instance.new("Folder")
+	playerstats.Parent = plr
+	playerstats.Name = "leaderstats"
+	
+	local clicks = Instance.new("IntValue")
+	clicks.Parent = playerstats
+	clicks.Name = "Clicks"
+end)	
