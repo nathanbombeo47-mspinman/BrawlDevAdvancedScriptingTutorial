@@ -2,10 +2,11 @@ local tool = script.Parent
 
 tool.Equipped:Connect(function()
 	print("this tool has been equipped")
+	tool:Activate()
 end)
 
 tool.Unequipped:Connect(function()
-	print("this tool has been unequipped")
+	print("deactivated")
 end)
 
 tool.Activated:Connect(function()
@@ -15,12 +16,18 @@ tool.Activated:Connect(function()
 	print("a new part has respawn")
 end)
 
+--this ↓ is not gonna be used only gonna function when your holding left click and let go when you let go it will function
 tool.Deactivated:Connect(function()
 	print("deactivated")
 end)
 
-so activated means like when you click on mouse left click and for other devices like mobile, xbox, etc and
-deactivated means when you let go of the clicking tapping.
+so ACTIVATED means like when you click on mouse left click and for other devices like mobile, xbox, etc and
+DEACTIVATED means when you let go of the clicking tapping.
 
-equipped means when you equip the tool and unequipped means you unequip it
+EQUIPPED is for like that function so whatever you put inside (function()
+what ever will be put here is gonna function when the tool is equipped
+end)
+and UNEQUIPPED does is that it does the same with equipped but unequipped is like when you don't equip it, it will function what ever is inside the (function()                                                                                           end)
+another good thing IS tool:Activate() :Activat() is the same for like clicking like Activated so you can do anything with it example when someone boughts the gamepass the script does the :Activate() and activates the script thats how it do.
 
+another too there is a properties of the tool that like RequiresHandle its on the properties and you can disable and able it so when you equip the tool it will not show like handle because you able it first off you NEED to delete the HANDLE and it will work if you didn't delete it will show a error.
