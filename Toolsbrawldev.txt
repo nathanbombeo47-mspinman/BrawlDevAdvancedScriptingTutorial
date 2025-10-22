@@ -31,3 +31,5 @@ and UNEQUIPPED does is that it does the same with equipped but unequipped is lik
 another good thing IS tool:Activate() :Activat() is the same for like clicking like Activated so you can do anything with it example when someone boughts the gamepass the script does the :Activate() and activates the script thats how it do.
 
 another too there is a properties of the tool that like RequiresHandle its on the properties and you can disable and able it so when you equip the tool it will not show like handle because you able it first off you NEED to delete the HANDLE and it will work if you didn't delete it will show a error.
+
+Theres actually StarterGear on Players - user.name - StarterGear and inside there if you put like tool and when they reset they will still have it, its really good especially for like gamepass purchase
