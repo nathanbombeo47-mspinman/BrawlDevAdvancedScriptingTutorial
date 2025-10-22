@@ -1,4 +1,5 @@
-Script For Tool
+Script for tool
+
 local tool = script.Parent
 local handle = tool.Handle
 local sound = tool.SoundBata2x
@@ -8,6 +9,7 @@ local WAIT_TIME = 0.2
 
 tool.Equipped:Connect(function()
 	print("this tool has been equipped")
+	print("Sound Played")
 	sound:Play()
 end)
 
@@ -20,7 +22,6 @@ tool.Activated:Connect(function()
 	part.Position = Vector3.new(0, 50, 0)
 	part.Size = Vector3.new(10, 10, 10)
 	print("a new part has respawn")
-	print("Sound Played")
 	holding = true
 	tool:ScaleTo(2)
 	
@@ -57,7 +58,8 @@ Theres actually StarterGear on Players - user.name - StarterGear and inside ther
 
 handle.Color =  Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))   this is for randomizing for selection of colors
 
-PlayerAdded
+PlayerAdded Script on ServerScriptService
+
 game.Players.PlayerAdded:Connect(function(plr)
 	local playerstats = Instance.new("Folder")
 	playerstats.Parent = plr
@@ -67,4 +69,3 @@ game.Players.PlayerAdded:Connect(function(plr)
 	clicks.Parent = playerstats
 	clicks.Name = "Clicks"
 end)	
-
