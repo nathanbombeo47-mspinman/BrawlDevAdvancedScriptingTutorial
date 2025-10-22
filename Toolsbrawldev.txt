@@ -9,14 +9,18 @@ tool.Unequipped:Connect(function()
 end)
 
 tool.Activated:Connect(function()
-	print("tool has been activated")
+	local part = Instance.new("Part", workspace)
+	part.Position = Vector3.new(0, 50, 0)
+	part.Size = Vector3.new(10, 10, 10)
+	print("a new part has respawn")
 end)
 
 tool.Deactivated:Connect(function()
-	print("tool has been deactivated")
+	print("deactivated")
 end)
 
 so activated means like when you click on mouse left click and for other devices like mobile, xbox, etc and
 deactivated means when you let go of the clicking tapping.
 
 equipped means when you equip the tool and unequipped means you unequip it
+
