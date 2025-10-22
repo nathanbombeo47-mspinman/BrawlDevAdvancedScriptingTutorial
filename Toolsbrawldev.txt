@@ -55,7 +55,7 @@ Theres actually StarterGear on Players - user.name - StarterGear and inside ther
 
 :ScaleTo(2) is for scaling the thing
 
-handle.Color =  Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))                                              this is for randomizing for selection of colors
+handle.Color =  Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))   this is for randomizing for selection of colors
 
 PlayerAdded
 game.Players.PlayerAdded:Connect(function(plr)
@@ -67,3 +67,4 @@ game.Players.PlayerAdded:Connect(function(plr)
 	clicks.Parent = playerstats
 	clicks.Name = "Clicks"
 end)	
+
