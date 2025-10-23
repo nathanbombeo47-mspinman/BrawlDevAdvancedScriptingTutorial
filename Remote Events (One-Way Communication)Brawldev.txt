@@ -1,6 +1,8 @@
 script for PlayerAdded
 
-🔰game.Players.PlayerAdded:Connect(function(plr)
+🔰local greetHumanoid = game.ReplicatedStorage.RemoteEvent.GivePesos
+
+game.Players.PlayerAdded:Connect(function(plr)
 	local playerstats = Instance.new("Folder")
 	playerstats.Parent = plr
 	playerstats.Name = "leaderstats"
@@ -9,10 +11,11 @@ script for PlayerAdded
 	count.Parent = playerstats
 	count.Name = "Pesos"
     count.Value = 100
+
+    greetHumanoid:FireClient(plr)
 end)
 
-local givepesos = game.ReplicatedStorage.RemoteEvent.(remoteventname)
-
+local givepesos = game.ReplicatedStorage.RemoteEvent.GivePesos
 givepesos.OnServerEvent:Connect(function(humanoid, pesosAmount)
 local leaderstats = humanoid.leaderstats
 local pesos = leaderstats.Pesos
@@ -22,13 +25,13 @@ pesos.Value += pesosAmount
 
 local script for the screengui
 
-local gui = script.Parent
+🔰local gui = script.Parent
 local giveButton = gui.givepesos
 
 local givepesos = game.ReplicatedStorage.RemoteEvent.(remoteventname)
 
 giveButton.MouseButton1Click:Connect(function()
 	givepesos:FireServer(50)
-end)
+🔰end)
 
 the (remoteventname) is the remoteevent where you should be put on the replicatedstorage
