@@ -22,3 +22,28 @@ else if randomnumber then
 
 --task 2
  🔰 print("after")
+
+🔰for task.spawn()
+
+🔰--task 1
+print("before")
+
+--task 2
+local islooping = true
+
+task.spawn(function()
+while islooping do
+	print("while loop")
+	task.wait(1.5)
+    end
+end)
+
+--task 3
+for _ = 1, 10 do
+	print("for loop 2")
+    task.wait(1.5)
+end
+islooping = false
+
+--task 4
+🔰print("after")  
