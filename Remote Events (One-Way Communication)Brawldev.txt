@@ -22,13 +22,13 @@ pesos.Value += pesosAmount
 
 local script for the screengui
 
-🔰local gui = script.Parent
+local gui = script.Parent
 local giveButton = gui.givepesos
 
 local givepesos = game.ReplicatedStorage.RemoteEvent.(remoteventname)
 
 giveButton.MouseButton1Click:Connect(function()
-	givepesos:FireServer()
-🔰end)
+	givepesos:FireServer(50)
+end)
 
 the (remoteventname) is the remoteevent where you should be put on the replicatedstorage
