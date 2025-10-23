@@ -47,3 +47,20 @@ islooping = false
 
 --task 4
 🔰print("after")  
+
+🔰For task.defer
+
+--task 1
+print("before")
+
+--task 2
+task.defer(function()
+    print("defer")
+end)    
+
+--task 3
+for _ = 1, 100 do
+    print("for loop 1")
+end
+--task 4
+print("after")
