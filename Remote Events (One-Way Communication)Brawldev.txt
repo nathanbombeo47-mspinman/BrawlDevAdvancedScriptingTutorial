@@ -1,1 +1,32 @@
-Remote Event Script
+script for PlayerAdded
+
+🔰game.Players.PlayerAdded:Connect(function(plr)
+	local playerstats = Instance.new("Folder")
+	playerstats.Parent = plr
+	playerstats.Name = "leaderstats"
+	
+	local count = Instance.new("IntValue")
+	count.Parent = playerstats
+	count.Name = "Pesos"
+    count.Value = 100
+end)
+
+local givepesos = game.ReplicatedStorage.RemoteEvent.GivePesos
+
+givepesos.OnServerEvent:Connect(function(humanoid, pesosAmount)
+local leaderstats = humanoid.leaderstats
+local pesos = leaderstats.Pesos
+
+pesos.Value += pesosAmount
+🔰end)
+
+local script for the screengui
+
+🔰local gui = script.Parent
+local giveButton = gui.givepesos
+
+local givepesos = game.ReplicatedStorage.RemoteEvent.GivePesos
+
+giveButton.MouseButton1Click:Connect(function()
+	givepesos:FireServer()
+🔰end)
