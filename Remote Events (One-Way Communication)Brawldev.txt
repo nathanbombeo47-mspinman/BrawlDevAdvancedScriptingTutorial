@@ -41,4 +41,6 @@ greetHumanoids.OnClientEvent:Connect(function(message)
     greetinglabel.Text = message
 🔰end)
 
+stopped at 16:29
+
 the (remoteventname) is the remoteevent where you should be put on the replicatedstorage
