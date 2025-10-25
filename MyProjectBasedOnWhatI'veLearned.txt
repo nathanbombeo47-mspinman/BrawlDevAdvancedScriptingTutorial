@@ -23,4 +23,32 @@ local summonMeteor = game.ReplicatedStorage.RemoteEvents.SpawnMeteor
 
 summonMeteor.OnServerEvent:Connect(function(player)
 summonMeteor:FireClient(player)
+
 end)
+
+Client Server
+You can use a Localscript to trigger an event on the server by calling the FireServer() method on a RemoteEvent. If you pass arguments to FireServer(), they pass to the event handler on the server with certain limitations. Note that the first parameter of the event handler on the server is always the Player object of the client that calls it, and additional parameters follow.
+
+Client
+RemoteEvent: FireServer(args)
+
+Server
+RemoteEvent.OnServerEvent:Connect(function(player, args))
+
+Server Client
+You can use a Script to trigger an event on a client by calling the FireClient() method on a RemoteEvent. The first argument for FireClient() is the Player object of the client that you want to respond to the event, and additional arguments pass to the client with certain limitations. Note that the event handler doesn't need to include the Player object as its first argument because you can determine the player on the client with Players.LocalPlayer.
+
+Server
+RemoteEvent: FireClient(player, args)
+
+Client
+RemoteEvent.OnClientEvent:Connect(function(args))
+
+Server All Clients
+You can use a Script to trigger an event on all clients by calling the FireAllClients() method on a RemoteEvent. Unlike FireClient(), the FireAllClients() method doesn't require a Player object because it fires the RemoteEvent to all clients.
+
+Server
+RemoteEvent:FireAllClients(args)
+
+Client
+RemoteEvent.OnClientEvent:Connect(function(args))
