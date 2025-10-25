@@ -1,0 +1,2 @@
+This Project is for a 2 way communication
+1st one: the client sends information to the server and the server sends information back to the client
