@@ -1,0 +1,26 @@
+--client script inside the StarterPlayerScripts
+local summonMeteor = game.ReplicatedStorage.RemoteEvents.SpawnMeteor
+
+summonMeteor.OnClientEvent:Connect(function()
+local meteor = Instance.new("Part", workspace)
+meteor.Size = Vector3.new(500, 500, 500)
+meteor.Position = Vector3.new(0, 2000, 0)
+meteor.Shape = "Ball"
+meteor.Material = "Neon"
+meteor.BrickColor = BrickColor.new("Really red")
+end)
+
+--client script inside the tool
+local tool = script.Parent
+local summonMeteor = game.ReplicatedStorage.RemoteEvents.SpawnMeteor
+
+tool.Activated:Connect(function()
+	summonMeteor:FireServer()
+end)
+
+--this script is inside the ServerScriptService
+local summonMeteor = game.ReplicatedStorage.RemoteEvents.SpawnMeteor
+
+summonMeteor.OnServerEvent:Connect(function(player)
+summonMeteor:FireClient(player)
+end)
