@@ -1,3 +1,5 @@
+THIS IS BASICALLY A TUTORIAL HOW TO COMMUNICATE TO THE SERVER AND CLIENTS
+
 --client script inside the StarterPlayerScripts
 local summonMeteor = game.ReplicatedStorage.RemoteEvents.SpawnMeteor
 
@@ -52,3 +54,4 @@ RemoteEvent:FireAllClients(args)
 
 Client
 RemoteEvent.OnClientEvent:Connect(function(args))
+
