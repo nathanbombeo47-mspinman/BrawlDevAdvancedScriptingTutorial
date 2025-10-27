@@ -59,4 +59,6 @@ button.MouseButton1Click:Connect(function()
 end)    
 
 This PROJECT is a ANOTHER METHOD
+This method is From the SERVER to the CLIENT and then back to the server.
+This is not really RECOMMENDED
 
