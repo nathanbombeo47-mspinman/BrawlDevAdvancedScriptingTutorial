@@ -1,3 +1,32 @@
 This Project is for a 2 way communication
 
 1st one: the client sends information to the server and the server sends information back to the client
+example the player can't purchase the item because he only has 45 pesos and it cost 50, so the server sent the
+information to the client and the client send it back to the server
+
+THE SCRIPT FOR LEADERSTATS
+
+game.Players.PlayerAdded:Connect(function(playr)
+local leaderstats = Instance.new("Folder", playr)
+leaderstats.Name = "leaderstats"
+
+local pesos = Instance.new("IntValue",  leaderstats)
+pesos.Name = "Pesos"
+pesos.Value = 55
+end)
+
+local remotefunction = game.ReplicatedStorage.Remotes.BoughtButton
+
+remotefunction.OnServerInvoke = function(playr)
+    local purchaseSuccess = false
+
+local leaderstats = playr.leaderstats
+local pesos = leaderstats.Pesos
+
+if pesos.Value >= 50 then
+    pesos.Value -= 50
+    purchaseSuccess = true
+   end
+
+   return purchaseSuccess
+end
