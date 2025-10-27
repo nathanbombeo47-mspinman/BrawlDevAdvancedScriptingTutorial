@@ -1,4 +1,5 @@
 This Project is for a 2 way communication
+This is a method where you go from the client to the server and then back to the client.
 
 1st one: the client sends information to the server and the server sends information back to the client
 example the player can't purchase the item because he only has 45 pesos and it cost 50, so the server sent the
@@ -58,3 +59,4 @@ button.MouseButton1Click:Connect(function()
 end)    
 
 This PROJECT is a ANOTHER METHOD
+
