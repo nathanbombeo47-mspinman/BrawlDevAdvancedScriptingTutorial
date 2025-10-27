@@ -56,3 +56,5 @@ button.MouseButton1Click:Connect(function()
 	prompt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	end    
 end)    
+
+This PROJECT is a ANOTHER METHOD
