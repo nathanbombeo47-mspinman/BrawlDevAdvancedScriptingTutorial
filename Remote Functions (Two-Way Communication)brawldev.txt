@@ -30,3 +30,29 @@ if pesos.Value >= 50 then
 
    return purchaseSuccess
 end
+
+LOCAL SCRIPT FOR THE GUI
+
+local remotefunction = game.ReplicatedStorage.Remotes.BoughtButton
+
+local gui = script.Parent
+local prompt = gui.Prompt
+local button = gui.BuyingOn
+
+button.MouseButton1Click:Connect(function()
+	local purchaseSuccess = remotefunction:InvokeServer()
+
+	if purchaseSuccess then
+	prompt.Text = "Purchase SUCCESSFUL!"
+	prompt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+		task.wait(3.5)
+	prompt.Text = "Would you Like to Buy this button"
+	prompt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	else
+		prompt.Text = "Purchase FAILED!"
+		prompt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		task.wait(3.5)
+	prompt.Text = "Would you Like to Buy this button"
+	prompt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	end    
+end)    
