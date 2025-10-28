@@ -1,4 +1,4 @@
-This Project is for a 2 way communication
+This Project is called REMOTE FUNCTION for a 2 way communication
 This is a method where you go from the client to the server and then back to the client.
 
 1st one: the client sends information to the server and the server sends information back to the client
@@ -61,4 +61,5 @@ end)
 This PROJECT is a ANOTHER METHOD
 This method is From the SERVER to the CLIENT and then back to the server.
 This is not really RECOMMENDED
+
 
