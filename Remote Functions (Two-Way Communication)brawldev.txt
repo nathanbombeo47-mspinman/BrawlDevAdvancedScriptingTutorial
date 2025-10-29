@@ -58,9 +58,103 @@ button.MouseButton1Click:Connect(function()
 	end    
 end)    
 
+WHAT I LEARNED
+OnServerInvoke:Connect(function()
+end) THIS IS FOR EVENTS THAT WHEN ITS FIRED THE EVENT FIRES THIS IS THE SCRIPT FOR IT
+
+THIS IS THE CALLBACK SERVERINVOKE
+remotefunction.OnServerInvoke = function(playr)
+end THIS HAS NO ")" ON THE END WHICH MAKE SENSE, IF IT HAS INFORMATION ON IT THE CLIENT WILL WORK ON IT
+
 This PROJECT is called EVENT VS CALLBACK a ANOTHER METHOD
 This method is From the SERVER to the CLIENT and then back to the server.
 This is not really RECOMMENDED
 
+USING EVERYTHING WHAT I LEARNED IM GONNA MAKE ↓↓↓
+TOOL SHOP SYSTEM
+REQUIREMENTS
+USE A REMOTE FUNCTION
+MAKE ATLEAST 3 BUTTONs/TOOLs
+USE A clone() to give player the tools placed in their backpack
 
+THE SCRIPT ON SERVERSCRIPTSERVICE
 
+game.Players.PlayerAdded:Connect(function(playr)
+local leaderstats = Instance.new("Folder", playr)
+leaderstats.Name = "leaderstats"
+
+local pesos = Instance.new("IntValue",  leaderstats)
+pesos.Name = "Pesos"
+pesos.Value = 250
+end)
+
+local remotefunction2 = game.ReplicatedStorage.Remotes.GiveItem
+
+remotefunction2.OnServerInvoke = function(playr, toolName, pricetool)
+    local purchaseSuccess = false
+
+local leaderstats = playr.leaderstats
+local pesos = leaderstats.Pesos
+
+if pesos.Value >= pricetool then
+    pesos.Value -= pricetool
+     
+    local tools = game.ServerStorage.ToolStorage:FindFirstChild(toolName)
+    if tools then
+       local clonedTool = tools:Clone()
+       clonedTool.Parent = playr.Backpack
+    end
+
+    purchaseSuccess = true
+   end
+
+   return purchaseSuccess
+end
+
+THE LOCAL SCRIPT INSIDE THE SCREENGUI
+
+local remotefunction2 = game.ReplicatedStorage.Remotes.GiveItem
+
+local gui = script.Parent
+local stickimage = gui.itemshow1
+local toolimage = gui.itemshow2
+local buy = gui.buybutton1
+local buy2 = gui.buybutton2
+local textresult = gui.successtext
+textresult.Visible = false
+
+buy.MouseButton1Click:Connect(function()
+	local purchasive = remotefunction2:InvokeServer("Stick", 75)
+
+	if purchasive then
+    textresult.Visible = true
+	textresult.Text = "Bought Successfully!!!"
+	textresult.BackgroundColor3 = Color3.fromRGB(77, 255, 0)
+	task.wait(2.5)
+	textresult.Visible = false
+	else
+	textresult.Visible = true
+	textresult.Text = "Inefficent Money"
+	textresult.BackgroundColor3 = Color3.fromRGB(255, 8, 8)
+	task.wait(2.5)
+	textresult.Visible = false
+	end    
+end) 
+
+buy2.MouseButton1Click:Connect(function()
+	local purchasive = remotefunction2:InvokeServer("Tool", 100)
+
+	if purchasive then
+		textresult.Visible = true
+		textresult.Text = "Bought Successfully!!!"
+		textresult.BackgroundColor3 = Color3.fromRGB(77, 255, 0)
+		task.wait(2.5)
+		textresult.Visible = false
+	else
+		textresult.Visible = true
+		textresult.Text = "Inefficent Money"
+		textresult.BackgroundColor3 = Color3.fromRGB(255, 8, 8)
+		task.wait(2.5)
+		textresult.Visible = false
+	end    
+end) 	
