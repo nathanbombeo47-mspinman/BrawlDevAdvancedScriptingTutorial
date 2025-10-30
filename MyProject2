@@ -1,0 +1,26 @@
+THE SCRIPT ON THE SERVERSCRIPTSERVICE
+
+local remote = game.ReplicatedStorage.Remotes.DO
+
+remote.OnServerEvent:Connect(function(player)
+	local part = Instance.new("Part")
+	part.Size = Vector3.new(4, 1, 4)
+	part.Anchored = true
+	part.Color = Color3.fromRGB(255, 0, 0)
+	part.Position = player.Character and player.Character.PrimaryPart.Position + Vector3.new(0, 5, 0) or Vector3.new(0, 10, 0)
+	part.Parent = workspace
+
+	print(player.Name .. " spawned a part!")
+end)
+
+THE LOCAL SCRIPT ON THE TOOL
+
+local tool = script.Parent
+local remote = game.ReplicatedStorage.Remotes.DO
+
+tool.Activated:Connect(function()
+	-- Fires when player clicks with the tool equipped
+	remote:FireServer()
+end)
+
+DONE THANKS FOR EVERYTHING BRAWLDEV AND MYSELF FOR CONTINUING THIS JOURNEY
