@@ -1,4 +1,17 @@
 Vector3 Episode....
 Vector3 is basically a value that allows us to manipulate specific properties inside our 3D World
 X means for FORWARD AND BACKWARD Y means for UPSIDE AND DOWNSIDE and Z means for SIDEWAYS AND BACKWAYS
-STOPPED AT 7:23
+
+THE SCRIPT
+
+game.Players.PlayerAdded:Connect(function(player)
+    task.wait(1.4)
+    local humanoidpart = player.Character:WaitForChild("HumanoidRootPart")
+	humanoidpart.Position = game.Workspace.TeleportPart.Position + Vector3.new(0, 5, 0)
+end)
+
+local part = game.Workspace.Part
+part.Orientation = Vector3.new(90, 9, 8)
+end
+
+THATS PRETTY MUCH IT OF WHAT I LEARNED
