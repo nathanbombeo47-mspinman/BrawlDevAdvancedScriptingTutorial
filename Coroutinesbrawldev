@@ -1,1 +1,3 @@
-
+create means to make the script how it function, 
+YIELD means to stop the function, 
+and RESUME means to continue when the YIELD was abled, IT REMOVES THE YIELD then it RESUMES.
