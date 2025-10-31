@@ -13,3 +13,26 @@ CLOSE
 WRAP               end)                                         end)()                            end
 
                    task2()                                                                        coroutine.wrap(myfunction)()
+
+FOR ARGUMENTS
+--Task2
+local task2 = coroutine.create(function(nu, nu)
+    print(nu + nu )
+    print("coroutine task")
+end)
+
+coroutine.resume(task2, 2, 2)
+
+--[[coroutine.wrap(function()
+    print("Coroutine Task")
+end)()]]
+
+--[[
+while true do
+
+end
+
+while true do
+
+end
+]]
