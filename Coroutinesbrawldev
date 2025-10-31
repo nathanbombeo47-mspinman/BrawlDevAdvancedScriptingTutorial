@@ -4,6 +4,6 @@ RESUME means to continue when the YIELD was abled, IT REMOVES THE YIELD then it 
 and CLOSE means to get RID of all functions.
 
 CREATE coroutine.create()
-YIELD
-RESUME
-CLOSE
+YIELD 
+RESUME coroutine.resume()
+CLOSE 
