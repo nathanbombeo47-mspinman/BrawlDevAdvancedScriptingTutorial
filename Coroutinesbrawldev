@@ -8,8 +8,8 @@ CREATE coroutine.create()
 YIELD 
 RESUME coroutine.resume()
 CLOSE 
-                                                   local task2 = coroutine.wrap(function()        coroutine.wrap(function()
-                                                      print("Coroutine Task")                        print("Coroutine Task")
-                                WRAP               end)                                           end)()
+                   local task2 = coroutine.wrap(function()      coroutine.wrap(function()
+                       print("Coroutine Task")                      print("Coroutine Task")
+WRAP               end)                                         end)()
 
-                                                   task2()
+                   task2()
