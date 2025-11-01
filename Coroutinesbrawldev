@@ -67,3 +67,5 @@ AND WE CAN CHECK THESE STATUS BY USING A FUNCTION   │  end)
          suspended  -  Server - Coroutines:8        │      print("Nathan Will Breakthrough")
          dead  -  Server - Coroutines:10            │     task.wait(.01)
                                                     │  end]]
+
+FOR YIELD (VERY USEFUL)
