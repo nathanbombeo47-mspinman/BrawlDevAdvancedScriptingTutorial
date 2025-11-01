@@ -127,3 +127,19 @@ print("Execution has stopped")
 print(coroutine.status(loopthread))
 
 For Yield Return
+local loopthread = coroutine.create(function()
+    for i = 1, 10 do
+        print(i)
+        coroutine.yield(true, 5, "Nathan will be successful")
+    end
+end)
+
+
+local successful, numbera1, resulta, resultaa = coroutine.resume(loopthread)
+print(numbera1, resulta, resultaa)
+
+print("Execution has stopped")  
+
+coroutine.resume(loopthread)
+
+print(coroutine.status(loopthread))
