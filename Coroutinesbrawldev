@@ -69,3 +69,13 @@ AND WE CAN CHECK THESE STATUS BY USING A FUNCTION   │  end)
                                                     │  end]]
 
 FOR YIELD (VERY USEFUL)
+coroutine.yield()
+
+local loopthread = coroutine.create(function()
+    for i = 1, 10 do
+    print(i)
+    coroutine.yield()
+    end
+end)
+
+coroutine.resume(loopthread)
