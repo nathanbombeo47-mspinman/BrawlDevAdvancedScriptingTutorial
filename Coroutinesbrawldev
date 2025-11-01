@@ -102,3 +102,26 @@ print(coroutine.status(loopthread))
 
 FOR CLOSE
 coroutine.close() simply ends the coroutine and we just won't be able to use it, unless we create another coroutine.
+
+local loopthread = coroutine.create(function()
+    for i = 1, 10 do
+        print(i)
+        coroutine.yield()                                                OUTPUT:
+    end                                                   1  -  Server - Coroutines:3
+end)                                                      Execution has stopped  -  Server - Coroutines:11
+                                                          2  -  Server - Coroutines:3
+                                                          Execution has stopped  -  Server - Coroutines:15
+coroutine.resume(loopthread)                              Execution has stopped  -  Server - Coroutines:20
+                                                          dead  -  Server - Coroutines:22
+print("Execution has stopped")
+
+coroutine.resume(loopthread)
+
+print("Execution has stopped")
+coroutine.close(loopthread)
+
+coroutine.resume(loopthread)
+
+print("Execution has stopped")
+
+print(coroutine.status(loopthread))
