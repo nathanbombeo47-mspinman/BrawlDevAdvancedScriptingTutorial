@@ -52,18 +52,18 @@ while true do
    task.wait(.01)
 end
 
-FOR STATUS                                            local loopOne = coroutine.create(function()  
-THREE STAGES OF A COROUTINE                               --[[while true do
-1. SUSPENDED                                                print("Nathan Will Be Successful")
-2. RUNNING                                                  task.wait(.01)
-3. DEAD                                                   end]]
-AND WE CAN CHECK THESE STATUS BY USING A FUNCTION     end)
-
-                                                   8: print(coroutine.status(loopOne))
-                                                      coroutine.resume(loopOne)
-                                                  10: print(coroutine.status(loopOne))
-
-                      OUTPUT                          --[[while true do  
-         suspended  -  Server - Coroutines:8              print("Nathan Will Breakthrough")
-         dead  -  Server - Coroutines:10                 task.wait(.01)
-                                                      end]]
+FOR STATUS                                          │   local loopOne = coroutine.create(function()  
+THREE STAGES OF A COROUTINE                         │      --[[while true do
+1. SUSPENDED                                        │        print("Nathan Will Be Successful")
+2. RUNNING                                          │        task.wait(.01)
+3. DEAD                                             │      end]]
+AND WE CAN CHECK THESE STATUS BY USING A FUNCTION   │  end)
+                                                    │ 
+                                                    │ 8: print(coroutine.status(loopOne))
+                                                    │  coroutine.resume(loopOne)
+                                                    │ 10: print(coroutine.status(loopOne))
+                                                    │
+                      OUTPUT                        │  --[[while true do  
+         suspended  -  Server - Coroutines:8        │      print("Nathan Will Breakthrough")
+         dead  -  Server - Coroutines:10            │     task.wait(.01)
+                                                    │  end]]
