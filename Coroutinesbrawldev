@@ -99,3 +99,6 @@ print("Execution has stopped")                                   3  -  Server - 
 coroutine.resume(loopthread)
 
 print(coroutine.status(loopthread))
+
+FOR CLOSE
+coroutine.close() simply ends the coroutine and we just won't be able to use it, unless we create another coroutine.
