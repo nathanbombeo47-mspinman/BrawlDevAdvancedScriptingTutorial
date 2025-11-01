@@ -79,3 +79,23 @@ local loopthread = coroutine.create(function()
 end)
 
 coroutine.resume(loopthread)
+
+local loopthread = coroutine.create(function()
+    for i = 1, 10 do
+    print(i)
+    coroutine.yield()
+    end
+end)
+
+
+coroutine.resume(loopthread)                                                       OUTPUT:
+
+print("Execution has stopped")                                   1  -  Server - Coroutines:3
+                                                                 Execution has stopped  -  Server - Coroutines:11
+coroutine.resume(loopthread)                                     2  -  Server - Coroutines:3
+                                                                 Execution has stopped  -  Server - Coroutines:15
+print("Execution has stopped")                                   3  -  Server - Coroutines:3
+                                                                 suspended  -  Server - Coroutines:19
+coroutine.resume(loopthread)
+
+print(coroutine.status(loopthread))
