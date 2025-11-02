@@ -1,1 +1,110 @@
+THIS IS FROM CHATGPT JUST USING IT TO MAKE MORE IDEAS THINGS ABOUT HAVE ADVANCED STUFF
+
+-- 🌠 Meteor Shower Trigger using ALL coroutine functions
+-- Author: You + GPT-5 :)
+
+local trigger = workspace:WaitForChild("StepTrigger")
+local meteorFolder = Instance.new("Folder", workspace)
+meteorFolder.Name = "Meteors"
+
+local METEOR_COUNT = 20
+local AREA_SIZE = 100
+local HEIGHT = 100
+local METEOR_SPEED = 100
+
+--// Function to create a meteor part
+local function createMeteor()
+	local meteor = Instance.new("Part")
+	meteor.Shape = Enum.PartType.Ball
+	meteor.Color = Color3.fromRGB(255, math.random(100, 255), 0)
+	meteor.Material = Enum.Material.Neon
+	meteor.Size = Vector3.new(3, 3, 3)
+	meteor.Anchored = false
+	meteor.Parent = meteorFolder
+	return meteor
+end
+
+--// Coroutine-based meteor behavior
+local function meteorBehavior(meteor)
+	local startPos = Vector3.new(
+		math.random(-AREA_SIZE, AREA_SIZE),
+		HEIGHT,
+		math.random(-AREA_SIZE, AREA_SIZE)
+	)
+	local endPos = Vector3.new(startPos.X, 0, startPos.Z)
+	meteor.Position = startPos
+
+	for i = 1, 20 do
+		task.wait(0.05)
+		local pos = meteor.Position:Lerp(endPos, i / 20)
+		meteor.Position = pos
+		if i == 10 then
+			-- Yield mid-flight
+			print(meteor.Name, "paused mid-air")
+			local message = coroutine.yield("Paused")
+			print(meteor.Name, "resumed after:", message)
+		end
+	end
+
+	meteor:Destroy()
+end
+
+--// Coroutine manager that spawns meteors
+local function startMeteorShower()
+	print("🌠 Meteor shower started!")
+
+	local activeCoroutines = {}
+
+	-- Create coroutines manually
+	for i = 1, METEOR_COUNT do
+		local meteor = createMeteor()
+		meteor.Name = "Meteor_" .. i
+		local co = coroutine.create(function()
+			meteorBehavior(meteor)
+		end)
+		table.insert(activeCoroutines, co)
+	end
+
+	-- Resume them in small bursts
+	for _, co in ipairs(activeCoroutines) do
+		coroutine.resume(co)
+	end
+
+	-- Manager loop: resume yielded meteors
+	while #activeCoroutines > 0 do
+		task.wait(0.5)
+		for i = #activeCoroutines, 1, -1 do
+			local co = activeCoroutines[i]
+			local status = coroutine.status(co)
+
+			if status == "dead" then
+				table.remove(activeCoroutines, i)
+			elseif status == "suspended" then
+				print("Resuming", co, "status:", status)
+				coroutine.resume(co, "Manager woke me up!")
+			end
+		end
+	end
+
+	print("✅ Meteor shower finished!")
+end
+
+--// Wrapped coroutine version (for fun)
+local wrappedShower = coroutine.wrap(startMeteorShower)
+
+--// Connect to the trigger part
+trigger.Touched:Connect(function(hit)
+	local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+	if player then
+		print(player.Name, "stepped on the trigger!")
+
+		-- Run in a coroutine so multiple players can trigger separately
+		local showerCoroutine = coroutine.create(function()
+			wrappedShower() -- uses coroutine.wrap internally
+		end)
+
+		print("Coroutine status:", coroutine.status(showerCoroutine))
+		coroutine.resume(showerCoroutine)
+	end
+end)
 
