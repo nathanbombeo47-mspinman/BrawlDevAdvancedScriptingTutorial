@@ -28,3 +28,5 @@ local randomNum = math.random(1, #musicGroup:GetChildren())
 local randomSound = musicGroup:GetChildren()[randomNum]
 
 randomSound:Play()
+
+SOUNDSERVICE VOLUME AND GROUPS VOLUME
