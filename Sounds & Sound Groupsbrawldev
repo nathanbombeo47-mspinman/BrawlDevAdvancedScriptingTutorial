@@ -19,3 +19,12 @@ SOUNDSERVICE AND SOUND GROUPS
 TO PUT A SOUND GROUP JUST HIT THE PLUS SIGN ON THE SOUND SERVICE THEN SEARCH SOUND GROUP AND CLICK ON IT...
 THIS IS GOOD FOR YOUR GAME OR PROJECTS BECAUSE IF YOU WANT A CERTAIN SOUND TO PLAY YOU CAN JUST
 CALL THE SOUND ITSELF ACCORDINGLY
+SCRIPT FOR IT
+
+local SoundService = game:GetService("SoundService")
+local musicGroup = SoundService:WaitForChild("Music")
+
+local randomNum = math.random(1, #musicGroup:GetChildren())
+local randomSound = musicGroup:GetChildren()[randomNum]
+
+randomSound:Play()
