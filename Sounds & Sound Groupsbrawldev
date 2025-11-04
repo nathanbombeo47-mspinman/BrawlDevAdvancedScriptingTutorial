@@ -1,1 +1,5 @@
+global sounds means both server and local can hear the sound
 
+local sounds means ONLY local means the player only not the SERVER can hear the sound
+
+Promixity Sounds
