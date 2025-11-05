@@ -53,3 +53,4 @@ end
 GetAllTags()
 this is kind of a global thing
 so in our GetTags example this told us to get tags from a specific instance but what if we wanted to just get all the tags that are available inside of the game.
+Stopped at 12:18...
