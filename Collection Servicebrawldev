@@ -23,3 +23,7 @@ for i,killBrick in pairs(killBricks) do
 		end
 	end)
 end
+
+GetTags() & GetAllTags()
+theres actually a tag property on a part that you can put a name into it
+you can add as many as you want and theres one on mine its called "KillBricks" its the tag which i USED in the SCRIPTER
