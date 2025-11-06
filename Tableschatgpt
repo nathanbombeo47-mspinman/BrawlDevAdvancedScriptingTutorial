@@ -1,1 +1,22 @@
+YOU CAN LEARN THIS FUNCTIONS
+1. if not
+2. if
+3. {}
+4. [()]
+5. if not (word == "the string inside the curly brackets")
 
+BY UNDERSTANDING THIS SCRIPT ⬇️
+
+local friends = {"bambam", "justen"}
+
+local randomfriend = friends[math.random(1, #friends)]
+
+print(randomfriend)
+
+if not (randomfriend == "bambam") then
+	print("It was Justen!")
+end
+
+if (randomfriend == "bambam") then
+    print("It was bambam")
+end
