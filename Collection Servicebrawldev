@@ -53,4 +53,34 @@ end
 GetAllTags()
 this is kind of a global thing
 so in our GetTags example this told us to get tags from a specific instance but what if we wanted to just get all the tags that are available inside of the game.
-Stopped at 12:18...
+
+SCRIPT..
+local CollectionService = game:GetService("CollectionService")
+local sound = game.StarterGui.GuiMusic.Scream
+
+local killBricks = CollectionService:GetTagged("KillBricks")
+
+for i,killBrick in pairs(killBricks) do
+	killBrick.Touched:Connect(function(touched)
+		local human = touched.Parent:FindFirstChild("Humanoid")
+
+		if human then
+			sound:Play()
+			human.Health = 0
+		end
+	end)
+end
+
+local partTags = CollectionService:GetTags(game.Workspace.KillBrick1)
+for i,tag in pairs(partTags) do
+	print(tag)
+end
+
+local allTags = CollectionService:GetAllTags()
+for i,tag in pairs(allTags) do
+	print(tag)
+end
+                                                                Output:
+                                   KillBricks  -  Server - CollectionService:19
+                                   KillBricks  -  Server - CollectionService:24
+                                   TagEditorTagContainer  -  Server - CollectionService:24
