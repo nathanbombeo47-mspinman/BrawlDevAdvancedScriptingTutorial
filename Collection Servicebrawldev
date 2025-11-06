@@ -98,3 +98,31 @@ CollectionService:AddTag(newPart, "KillBricks")
 task.wait(5)
 
 CollectionService:RemoveTag(newPart, "KillBricks")
+
+There's a another function that if were looking for a specific tag so lets say that after we add in a tag for our new part let's
+make a check this this newPart still has the "KillBrick" tag
+
+SCRIPT..
+local CollectionService = game:GetService("CollectionService")
+local sound = game.StarterGui.GuiMusic.Scream
+
+local killBricks = CollectionService:GetTagged("KillBricks")
+
+for i,killBrick in pairs(killBricks) do
+	killBrick.Touched:Connect(function(touched)
+		local human = touched.Parent:FindFirstChild("Humanoid")
+
+		if human then
+			sound:Play()
+			human.Health = 0
+		end
+	end)
+end
+
+CollectionService:GetInstanceAddedSignal("KillBricks"):Connect(function()
+	print("killbrick has been added to the collection")
+end)
+
+CollectionService:GetInstanceRemovedSignal("KillBricks"):Connect(function()
+	print("killbrick has been removed from the collection")
+end)
