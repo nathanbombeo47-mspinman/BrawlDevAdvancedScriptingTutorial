@@ -1,0 +1,30 @@
+i am officially learning from chatgpt not from brawldev i think this is more kind of effective FOR ME not all of the people i don't find it enjoyable
+learning for brawldev thats why i don't wanna learn from it
+
+i like more chatgpt because in less than 10 minute i already know how modulce scripts work
+Ex: i have a module on the folder ServicesM&Remotes and that folder is inside of ReplicatedStorage and that module acts as a toolbox
+and the script is the User of the toolbox.
+
+this script is the User of the toolbox
+local killbrick = require(game.ReplicatedStorage["ServicesM&Remotes"].KillBrick)
+
+local part = game.Workspace.killpart
+killbrick.KillOnTouch(part)
+
+this is the module which the toolbox
+local killbrick = {}
+
+function killbrick.KillOnTouch(part)
+    part.Touched:Connect(function(hit)
+    local character = hit.Parent
+    local humanoid = character:FindFirstChild("Humanoid")
+
+    if humanoid then
+        humanoid.Health = 0
+
+        end
+    end)
+end
+
+return killbrick
+done..
