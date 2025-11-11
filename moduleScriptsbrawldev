@@ -25,3 +25,4 @@ and local scripts are the USER of the toolbox
 
                               return module
 11. Module User THIS IS REALLY SIMPLE only ONE LINE -- local moduleUser = require(game.ReplicatedStorage.Shared.Services.Modules.module) 
+12. ADDING FUNCTIONS-- 
