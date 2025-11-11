@@ -3,3 +3,9 @@ Modules is very USEFUL because:
 2. the information or function inside it can be access by on (1).
 3. can be useful for making huge projects.
 4. you can pretty much put it in every container on the ROBLOX STUDIO, depending on how you use it.
+5. Module Syntax-- local module = {} - a local variable just simple called module and its a table, so what does this means? this pretty much tells
+us that a module script in reality is pretty much a table you can pretty much put inside of the table whatever you want.
+6. Module Syntax2-- return module - this line of script will return the line of script full of information that we put
+6. Module Syntax3-- the table its the line between the local module = {}                           So its like this -- local module = {}
+                    and return module                                                                                  --this is the table
+                                                                                                                       return module
