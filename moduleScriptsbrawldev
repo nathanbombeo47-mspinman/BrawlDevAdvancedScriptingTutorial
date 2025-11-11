@@ -6,8 +6,14 @@ Modules is very USEFUL because:
 5. Module Syntax-- local module = {} - a local variable just simple called module and its a table, so what does this means? this pretty much tells
 us that a module script in reality is pretty much a table you can pretty much put inside of the table whatever you want.
 6. Module Syntax2-- return module - this line of script will return the line of script full of information that we put
-6. Module Syntax3-- the table its the line between the local module = {}                           So its like this -- local module = {}
-                    and return module                                                                                  --this is the table
-                                                                                                                       return module
-7.Using the Module-- if you want to use it you would need to use a different serverscript and local script, it acts like a toolbox that every script
+6. Module Syntax3-- the table its the -- local module = {this}        So its like this -- local module = {this is the table}
+                                                                                                      
+                                                                                          return module
+7. Using the Module-- if you want to use it you would need to use a different serverscript and local script, it acts like a toolbox that every script
 and local scripts are the USER of the toolbox
+8. Using the table-- local module = { part = Instance.new("Part", workspace) } - and the-- return module.
+9. The Module USER (ServerScript)-- local moduleUser = require(game.ReplicatedStorage.Shared.Services.Modules.module)
+                                    
+                                    local part = moduleUser.part
+                                    part.Size = Vector3.new(100, 100, 100)
+                                    part.Position = Vector3.new(0, 1250, 0)
