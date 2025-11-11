@@ -9,3 +9,5 @@ us that a module script in reality is pretty much a table you can pretty much pu
 6. Module Syntax3-- the table its the line between the local module = {}                           So its like this -- local module = {}
                     and return module                                                                                  --this is the table
                                                                                                                        return module
+7.Using the Module-- if you want to use it you would need to use a different serverscript and local script, it acts like a toolbox that every script
+and local scripts are the USER of the toolbox
