@@ -1,1 +1,4 @@
-
+Modules is very USEFUL because:
+1. it can be access by both local and serverscript
+2. the information or function inside it can be access by on (1)
+3. can be useful for making huge projects
