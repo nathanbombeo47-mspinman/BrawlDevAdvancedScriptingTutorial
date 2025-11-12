@@ -29,16 +29,16 @@ Quad, Quart, Quint, Bounce, Elastic, Exponential, Cubic and Circular.
 local Tweeninfo = TweenInfo.new(5, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out)
 4.Pause(), / Cancel()--            THE SCRIPT..
                            	local tween = tweenService:Create(destinationPart, Tweeninfo, goal)
-	                          tween:Play()
-	                          task.wait(1)
-	                          tween:Pause()
-	                          task.wait(1)
-	                          tween:Play()
-	                          task.wait(1)
-	                          tween:Cancel()
+	                        tween:Play()
+	                        task.wait(1)
+	                        tween:Pause()
+	                        task.wait(1)
+	                        tween:Play()
+	                        task.wait(1)
+	                        tween:Cancel()
 5. There's one Event that is special with tween service and that is the event of detecting when our tween
    finishes with the object-- 	tween.Completed:Connect(function() - when the tween reaches the goal which
-		                            print("Tween has been completed")    is the destination position of the part
-	                              end)							                   it's gonna pretty much print the words.
+		                        print("Tween has been completed")    is the destination position of the part
+	                            end)							     it's gonna pretty much print the words.
    this function is more accurate and fast rather than in the 5. event-- tween.Completed:Wait()
                                                                          print("Tween has been complete")
