@@ -1,0 +1,44 @@
+1.the TweenInfo.new() function-- local Tweeninfo = TweenInfo.new(5) - its a thing
+  that uses a easingstyle or whatever.
+2.the Goal function-- local goal = { Position = Vector3.new(-11.5, 9.5, 3) } - this
+  is the destination of the part's position to go to.
+3.The TweenService:Create() function-- local tween = TweenService:Create("object", "Tweeninfo", "goal")
+
+this script is inside of a module because i prefer to..
+
+local tweenPart = {}
+
+function tweenPart.partTween()
+	local tweenService = game:GetService("TweenService")
+	local destinationPart = game.Workspace.HappyBrick
+
+	local Tweeninfo = TweenInfo.new(5)
+
+	local goal = { Position = Vector3.new(-11.5, 9.5, 3) }
+
+	local tween = tweenService:Create(destinationPart, Tweeninfo, goal)
+	tween:Play()
+end
+
+return tweenPart
+
+1.Easing Style Types-- Linear, Sine, Back,
+Quad, Quart, Quint, Bounce, Elastic, Exponential, Cubic and Circular.
+2.Easing Style Direction Types-- In, InOut and Out
+3.Easing Function-- 
+local Tweeninfo = TweenInfo.new(5, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out)
+4.Pause(), / Cancel()--            THE SCRIPT..
+                           	local tween = tweenService:Create(destinationPart, Tweeninfo, goal)
+	                          tween:Play()
+	                          task.wait(1)
+	                          tween:Pause()
+	                          task.wait(1)
+	                          tween:Play()
+	                          task.wait(1)
+	                          tween:Cancel()
+5. There's one Event that is special with tween service and that is the event of detecting when our tween
+   finishes with the object-- 	tween.Completed:Connect(function() - when the tween reaches the goal which
+		                            print("Tween has been completed")    is the destination position of the part
+	                              end)							                   it's gonna pretty much print the words.
+   this function is more accurate and fast rather than in the 5. event-- tween.Completed:Wait()
+                                                                         print("Tween has been complete")
