@@ -1,1 +1,74 @@
+local user = game:GetService("UserInputService")
+local moduleprinter = require(game.ReplicatedStorage.Shared.Services.Modules:WaitForChild("Print"))
+local moduleprinter2 = require(game.ReplicatedStorage.Shared.Services.Modules:WaitForChild("Print2"))
+local isJump = false
+local TICK = tick()
 
+if user.TouchEnabled then
+	print("bro is playing on mobile")
+	workspace:WaitForChild("Baseplate").Color = Color3.fromRGB(52, 1, 255)
+end
+
+user.InputBegan:Connect(function(clicked, Gprocessed)
+	if Gprocessed then
+		return
+	end
+
+	if user:IsKeyDown(Enum.KeyCode.Q) and clicked.KeyCode == Enum.KeyCode.E then
+		moduleprinter2.init()
+		moduleprinter.init()
+	end
+
+	if clicked.KeyCode == Enum.KeyCode.T and (tick() - TICK <= 0.2) then
+		print("player has pressed twice")
+	end
+	TICK = tick()
+
+	if clicked.UserInputType == Enum.UserInputType.Touch then
+		print("Nathan is humble")
+	end
+end)
+
+user.InputEnded:Connect(function(clicked, Gprocessed)
+	if clicked.KeyCode == Enum.KeyCode.Three then
+		print("TOFB -- takes off from button")
+	end
+
+	if Gprocessed then
+		return
+	end
+end)
+
+user.JumpRequest:Connect(function()
+	if not isJump then
+		isJump = true
+
+		local part = Instance.new("Part", workspace)
+		part.Position = Vector3.new(0, 100, 0)
+
+		task.wait(0.5)
+		isJump = false
+	end
+end)
+
+
+1.UserInputService is mainly used for clicking to your keyboard so it means you can't do it on mobile.
+2.InputBegan is a keyboard sensor that listens to every button the human clicked.
+3.Clicked is the keybind which means if you require the script to function when a certain Keybind is
+  needed to be click like most of keyboard's buttons, like if you click Q it will function.
+4.KeyCode is the statement for the scripter to decide which button on the keyboard will be click.
+5.Gprocessed is the listener if the player touches any gui like chat, add, gui, etc.
+6.InputEnded is a function when the human takes his finger from holding the button.
+7.UserInputType is a thing that can be click by Mouse/PC, Touch/Phone and Gamepad/Xbox.
+  Like Mouse1, Mouse2, Mouse3, Touch and Gamepad.
+8.TouchEnabled, MouseEnabled and VREnabled are the devices from which devices you play on TouchEnabled is
+  for Mobile, MouseEnabled is for PC, and VREnabled is for XBOX.
+9.JumpRequest is just a function that fires when a player jumps, and if you only put like a function without
+  any if boolean it will not work i've done this and i forgot how it's done and now my confusion is the boolean
+  itself so like you need to put local switch = false to always false because if you do choose true it will
+  double out and crashes, so like the if should be correct to so put if not switch then and that will work.
+10.Tick() is mainly used for a ability or keybind will function if clicked twice, so you need to put things like
+   make variable-- local TICK = tick()
+   if clicked.KeyCode == Enum.KeyCode.T and (tick() - TICK <= 0.2) then
+   end
+   TICK = tick()
