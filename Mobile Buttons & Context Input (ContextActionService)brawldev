@@ -1,1 +1,151 @@
+I AM ONLY PUTTING THE SCRIPT I AM NOT GONNA TELL WHAT IT DOES OR SO.
+Stopped at 9:25...
 
+First Script
+
+
+local context = {}
+
+local contexto = game:GetService("ContextActionService")
+local switch = false
+
+function context.init()
+	local function PressQ(actionWord, flowState)
+		
+		if actionWord == "PushUpQ" and flowState == Enum.UserInputState.Begin then
+			print("Player has clicked Q")
+		end
+	end
+
+	contexto:BindAction("PushUpQ", PressQ, true, Enum.KeyCode.Q)
+	contexto:UnbindAction("PushUpQ")
+end
+
+return context
+
+
+Second Script
+
+
+local context = {}
+
+local contexto = game:GetService("ContextActionService")
+local stick = game.StarterPack.CandyStick
+
+function context.init()
+	local function PressQ(actionWord, flowState)
+		if actionWord == "PushUpQ" and flowState == Enum.UserInputState.Begin then
+			print("Trisha bayot")
+		end
+	end
+
+	stick.Equipped:Connect(function()
+		contexto:BindAction("PushUpQ", PressQ, true, Enum.KeyCode.Q)
+	end)
+
+	stick.Unequipped:Connect(function()
+		contexto:UnbindAction("PushUpQ")
+	end)
+end
+
+return context
+
+
+Third Script
+
+
+local context = {}
+
+--this script must be on tool and needed to be a client
+
+local contexto = game:GetService("ContextActionService")
+local stick = script.Parent
+function context.init()
+	local function PressQ(actionWord, flowState)
+		if actionWord == "PressedQ" and flowState == Enum.UserInputState.Begin then
+			print("Pressed Q to know")
+		end
+
+		if actionWord == "PushUpQ" and flowState == Enum.UserInputState.Begin then
+			print("Trisha bayot")
+		end
+	end
+
+	stick.Equipped:Connect(function()
+		contexto:BindActionAtPriority("PressedQ", PressQ, true, 0.0001, Enum.KeyCode.Q)
+		contexto:BindActionAtPriority("PushUpQ", PressQ, true, 0.0002, Enum.KeyCode.Q)
+	end)
+
+	stick.Unequipped:Connect(function()
+		contexto:UnbindAction("PushUpQ")
+	end)
+end
+
+return context
+
+
+Fourth Script For Mobile
+
+
+local stick = script.Parent
+local contexto = game:GetService("ContextActionService")
+
+local function PressQ(actionWord, flowState)
+	if actionWord == "PressedQ" and flowState == Enum.UserInputState.Begin then
+		print("Pressed Q to know")
+	end
+
+	if actionWord == "PushUpQ" and flowState == Enum.UserInputState.Begin then
+		print("Trisha bayot")
+	end
+end
+
+stick.Equipped:Connect(function()
+	contexto:BindActionAtPriority("PressedQ", PressQ, true, 0.0001, Enum.KeyCode.Q)
+	contexto:BindActionAtPriority("PushUpQ", PressQ, true, 0.0002, Enum.KeyCode.Q)
+	contexto:SetTitle("PressedQ", "Print")
+	contexto:SetImage("PressedQ", "rbxassetid://93390186")
+	contexto:SetTitle("PushUpQ", "Print")
+	contexto:SetImage("PushUpQ", "rbxassetid://93390186")
+end)
+
+stick.Unequipped:Connect(function()
+	contexto:UnbindAction("PushUpQ")
+end)
+
+
+Fifth Script For Mobile
+
+
+local stick = script.Parent
+local contexto = game:GetService("ContextActionService")
+
+local function PressQ(actionWord, flowState)
+	if actionWord == "PressedQ" and flowState == Enum.UserInputState.Begin then
+		print("Pressed Q to know")
+	end
+
+	if actionWord == "PushUpQ" and flowState == Enum.UserInputState.Begin then
+		print("Trisha bayot")
+	end
+end
+
+stick.Equipped:Connect(function()
+	contexto:BindActionAtPriority("PressedQ", PressQ, true, 0.0001, Enum.KeyCode.Q)
+	contexto:BindActionAtPriority("PushUpQ", PressQ, true, 0.0002, Enum.KeyCode.Q)
+	contexto:SetTitle("PressedQ", "Print")
+	contexto:SetImage("PressedQ", "rbxassetid://93390186")
+	contexto:SetTitle("PushUpQ", "Print")
+	contexto:SetImage("PushUpQ", "rbxassetid://93390186")
+	contexto:SetPosition("PressedQ", UDim2.new(-1, 0, -1, 0))
+
+	local button = contexto:GetButton("PressedQ")
+	if button then
+		button.ImageColor3 = Color3.fromRGB(38, 0, 255)
+		button.ImageTransparency = 0.5
+	end
+end)
+
+stick.Unequipped:Connect(function()
+	contexto:UnbindAction("PushUpQ")
+end)
