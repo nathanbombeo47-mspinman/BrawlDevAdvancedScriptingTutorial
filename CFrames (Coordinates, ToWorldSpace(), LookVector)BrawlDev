@@ -1,1 +1,110 @@
+CFRAME SCRIPTS
 
+
+BASIC CFRAME
+
+
+local partCF = {}
+
+local part = game.Workspace:WaitForChild("PartCF")
+
+local newCFrame = CFrame.new(14, 6, -0.5)
+
+part.CFrame = newCFrame
+
+return partCF
+
+
+ANGLES, ORIENTATION & ROTATION
+
+
+local partCF = {}
+
+local part = game.Workspace:WaitForChild("PartCF")
+
+local newCFrame = CFrame.Angles(0, (45), 0)
+
+part.CFrame = newCFrame
+
+return partCF
+
+
+MOVEMENT DETECTOR
+
+
+local partCF = {}
+
+
+function partCF.init(EthanBarbie)
+	
+	local allseeinghead = workspace:WaitForChild("AllSeeingHead")
+
+	-- Player character
+	local char = EthanBarbie.Character or EthanBarbie.CharacterAdded:Wait()
+	local hrp = char:WaitForChild("HumanoidRootPart")
+
+	while true do
+		task.wait(0.01)
+	allseeinghead.CFrame = CFrame.new(allseeinghead.Position, hrp.Position)
+   end
+end
+
+return partCF
+
+THE SERVERSCRIPT (USER)
+
+local CFmodule = require(game.ReplicatedStorage.Shared.Services.Modules.AdvancedCFrame)
+local Players = game:GetService("Players")
+
+Players.PlayerAdded:Connect(function(player)
+	CFmodule.init(player)
+end)
+
+
+ADDING SOME DISTANCES OPERATION
+
+
+local partCF = {}
+
+local part = game.Workspace:WaitForChild("PartCF")
+
+local partPos = part.Position
+local newPos = partPos + Vector3.new(0, 25, 0)
+
+part.CFrame = CFrame.new(newPos)
+
+return partCF
+
+Uncomplicated Version (* this symbol means just like + the + might not work with the
+CFrame because its not a CFrame property * is a CFrame property)
+
+part.CFrame = part.CFrame * CFrame.new(25, 0, 0)
+
+
+GLOBAL vs RELATIVE CFrames ToWorldSpace() (IF you click Ctrl L on PC, you will be enabling
+the relative CFrame, if not you will be disabling relative and be on the global CFrame.)
+
+
+part.CFrame = part.CFrame:ToWorldSpace(CFrame.new(0, 5, 0))
+
+
+VECTOR PROPERTIES (LookVector being the blue arrow, RightVector being the red arrow, and
+UpVector being the green arrow.)
+
+
+local VectorSurge = part.CFrame.LookVector
+
+part.Position = part.Position + (VectorSurge * 25)
+
+
+CFrame with Models (this is a serverscript, the parent is a model, i putted two parts,
+added a weld constraint the part 0 is set to the primarypart and the part 1 is set to
+the other part, and there is a property on every model that you will find it's called
+PrimaryPart and selected the PrimaryPart to be the must select thing.)
+
+
+local model = script.Parent
+
+local primary = model.PrimaryPart.CFrame
+
+model.PrimaryPart.CFrame = primary * CFrame.new(50,0,0)
