@@ -108,3 +108,46 @@ local model = script.Parent
 local primary = model.PrimaryPart.CFrame
 
 model.PrimaryPart.CFrame = primary * CFrame.new(50,0,0)
+
+
+I MADE A PROJECT LIKE A PET THAT IS FOLLOWING THE CHARACTER 
+
+THE MODULE
+
+local pet = {}
+
+function pet.Init(player)
+	task.wait(1)
+	print("activated")
+
+	local char = player.Character or player.CharacterAdded:Wait()
+	local torso = char:WaitForChild("UpperTorso")
+
+	-- Clone the pet model / part
+	local template = workspace:WaitForChild("OwnerPet")
+	template.CanCollide = false
+
+	local petPart = template:Clone()
+	petPart.Parent = workspace
+	petPart.Anchored = true
+
+	while true do
+		-- Follow player's torso
+		petPart.CFrame = torso.CFrame * CFrame.new(0, 0, 5)
+		task.wait(0.015)
+	end
+end
+
+return pet
+	
+
+THE SERVERSCRIPT ON THE SERVERSCRIPTSERVICE
+
+
+local petFollower = require(game.ReplicatedStorage.Shared.Services.Modules.CFrameTest)
+local players = game:GetService("Players")
+
+players.PlayerAdded:Connect(function(player)
+	petFollower.Init(player)
+end)
+
