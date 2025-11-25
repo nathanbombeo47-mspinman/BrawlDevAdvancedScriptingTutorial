@@ -1,3 +1,5 @@
+REMEMBER FOCUS ONLY ON SCRIPTING DON'T MULTI TASK
+
 API FOR MANAGING PLAYER's Reset Cooldown
 
 local Players = game:GetService("Players")
