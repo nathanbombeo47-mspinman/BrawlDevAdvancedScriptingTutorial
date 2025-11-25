@@ -1,1 +1,7 @@
+API FOR MANAGING PLAYER's Reset Cooldown
 
+local Players = game:GetService("Players")
+
+Players.RespawnTime = 0.1 -- Change to desired seconds (default is 5)
+
+DONE
