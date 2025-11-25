@@ -5,3 +5,42 @@ local Players = game:GetService("Players")
 Players.RespawnTime = 0.1 -- Change to desired seconds (default is 5)
 
 DONE
+
+PROJECT FOR A PART FOLLOWING A OTHER'S PART CFRAME
+MODULE
+
+local follow = {}
+
+function follow.init(player)
+	player.CharacterAdded:Connect(function(character)
+		local lowerT = character:WaitForChild("LowerTorso")
+
+		local PETBOX = workspace:WaitForChild("Jandel")
+
+		local dupe = PETBOX:Clone()
+		dupe.Parent = workspace
+		dupe.Anchored = true
+		dupe.CanCollide = false
+
+		task.spawn(function()
+			while character.Parent do
+				dupe.CFrame = lowerT.CFrame * CFrame.new(0, 0, 6)
+				task.wait(0.01)
+			end
+			dupe:Destroy() -- Destroys when character resets/dies
+		end)
+	end)
+end
+
+return follow
+
+THE SERVERSCRIPT
+
+local module = require(game.ReplicatedStorage.Shared.Services.Modules.FollowingPet)
+local playerr = game:GetService("Players")
+
+playerr.PlayerAdded:Connect(function(player)
+	module.init(player)
+end)
+
+DONE
