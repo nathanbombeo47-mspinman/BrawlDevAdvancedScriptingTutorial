@@ -1,1 +1,130 @@
 
+Bindables Events and Functions are communication between the server and server, client and client.
+
+BINDABLE EVENTS
+
+Bindable 1
+local bindableEvent = game.ReplicatedStorage.Remotes:WaitForChild("Bremo")
+
+task.wait(1)
+bindableEvent:Fire("Successful", "Unsuccessful")
+
+--Fire() is basically FireServer() and FireClient()
+
+Bindable 2
+local bindableEvent2 = game.ReplicatedStorage.Remotes:WaitForChild("Bremo")
+
+bindableEvent2.Event:Connect(function(ambitions, fearful)
+	print("Bindable has been fire")
+	print(ambitions)
+	print(fearful)
+end)
+
+✅Done	
+
+ADVANCED BINDABLES
+
+Bindable 1
+local bindableEvent = game.ReplicatedStorage.Remotes:WaitForChild("Bremo")
+
+function init()
+	print("Don't give up my friend's..")
+	print("Don't ever give up if you want to be successful.")
+	print(
+		"If you feel frustrated of doing something that could make you successful, then welcome to the world of entrepreneurs"
+	)
+	print("Be built different")
+end
+
+task.wait(1)
+bindableEvent:Fire(init())
+
+Bindable 2
+local bindableEvent2 = game.ReplicatedStorage.Remotes:WaitForChild("Bremo")
+
+bindableEvent2.Event:Connect(function(...)
+	local argums = { ... }
+
+	for _, set in pairs(argums) do
+		print(set)
+	end
+end)
+
+
+✅Done
+
+ADVANCED BINDABLES 2
+
+Bindable1
+local bindableEvent = game.ReplicatedStorage.Remotes:WaitForChild("Bremo")
+
+function init()
+	print("Do coding, in the morning add that routine")
+	print("Justin PalaOtot")
+end
+
+task.wait(1)
+bindableEvent:Fire(init())
+
+✅Done
+
+Bindable2
+local bindableEvent2 = game.ReplicatedStorage.Remotes:WaitForChild("Bremo")
+
+bindableEvent2.Event:Connect(function(...)
+	local argues = {...}
+	
+	if argues[1] == 1 then end
+end)
+
+
+✅Done
+
+BINDABLE FUNCTION
+
+Bindable1
+local bindaFunc = game.ReplicatedStorage.Remotes:WaitForChild("Bfunc")
+local result = bindaFunc:Invoke(23123, 284)
+task.wait(8)
+print(result)
+
+✅Done
+
+Bindable2
+local bindaFunc = game.ReplicatedStorage.Remotes:WaitForChild("Bfunc")
+
+bindaFunc.OnInvoke = function(num1, num2)
+	return num1 + num2
+end
+
+✅Done
+
+Advanced BINDABLE FUNCTION
+function init()
+	print("Do coding, in the morning add that routine")
+	print("Justin PalaOtot")
+end
+
+local bindaFunc = game.ReplicatedStorage.Remotes:WaitForChild("Bfunc")
+local pahak = workspace.Pahak
+local touching = false
+
+pahak.Touched:Connect(function(hit)
+	if not touching then
+	touching = true	
+	local result = bindaFunc:Invoke(init())
+	task.wait(1.5)
+	touching = false
+	end
+end)
+
+✅Done
+
+Advanced BINDABLE FUNCTION2
+local bindaFunc = game.ReplicatedStorage.Remotes:WaitForChild("Bfunc")
+
+bindaFunc.OnInvoke = function()
+	return
+end
+
+✅Done
